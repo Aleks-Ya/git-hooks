@@ -1,0 +1,17 @@
+﻿#!/usr/bash
+
+NO_JIRA_TASK=666 #Код выхода, если в сообщении коммита не найден номер таска
+
+task=`egrep "PKS-[0-9]+" "$1"`
+
+if [ -n "task" ]
+then
+	echo "All is ok"
+	exit 1
+else
+    echo "No JIRA task number"
+    exit $NO_JIRA_TASK
+fi
+
+echo "Finish"
+exit 1
